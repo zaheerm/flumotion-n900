@@ -1,0 +1,53 @@
+<registry>
+
+  <components>
+
+    <component type="n900aac-encoder" base="flumotion/component/encoders/n900aac"
+               _description="Encodes a raw video feed using N900's aac encoder." >
+      <source location="flumotion.component.encoders.n900aac.n900aac" />
+      <eater name="default" />
+      <feeder name="default" />
+      <entries>
+        <entry type="component" location="n900aac.py"
+               function="N900AAC"/>
+      </entries>
+
+      <properties>
+        <property name="bitrate" type="int"
+                  _description="The bit rate to encode at (in bps)." />
+      </properties>
+    </component>
+
+  </components>
+
+  <bundles>
+
+    <bundle name="n900aac-base" project="n900">
+        <dependencies>
+            <dependency name="component-base" />
+        </dependencies>
+
+        <directories>
+            <directory name="flumotion/component/encoders/n900aac">
+                <filename location="__init__.py" />
+            </directory>
+        </directories>
+    </bundle>
+
+    <bundle name="n900aac-component" project="n900">
+        <dependencies>
+            <dependency name="component" />
+            <dependency name="n900aac-base" />
+        </dependencies>
+
+        <directories>
+            <directory name="flumotion/component/encoders/n900aac">
+                <filename location="n900aac.py" />
+            </directory>
+        </directories>
+    </bundle>
+
+
+  </bundles>
+
+</registry>

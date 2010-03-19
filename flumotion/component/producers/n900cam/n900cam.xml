@@ -1,0 +1,50 @@
+<registry>
+
+  <components>
+
+    <component type="n900cam-producer" base="flumotion/component/producers/n900cam"
+               _description="Produces a feed from N900's camera">
+      <source location="flumotion.component.producers.n900cam.n900cam" />
+      <feeder name="default" />
+      <entries>
+        <entry type="component" location="n900cam.py"
+               function="N900CamProducer" />
+      </entries>
+      <properties>
+        <property name="device" type="string"
+                  _description="The device of the camera," />
+      </properties>
+    </component>
+
+  </components>
+
+  <bundles>
+
+    <bundle name="n900cam-producer-base" project="n900">
+        <dependencies>
+            <dependency name="component-base" />
+        </dependencies>
+
+        <directories>
+            <directory name="flumotion/component/producers/n900cam">
+                <filename location="__init__.py" />
+            </directory>
+        </directories>
+    </bundle>
+
+    <bundle name="n900cam-producer-component" project="n900"> 
+        <dependencies>
+            <dependency name="component" />
+            <dependency name="n900cam-producer-base" />
+        </dependencies>
+
+        <directories>
+            <directory name="flumotion/component/producers/n900cam">
+                <filename location="n900cam.py" />
+            </directory>
+        </directories>
+    </bundle>
+
+  </bundles>
+
+</registry>

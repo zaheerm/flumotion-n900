@@ -1,0 +1,95 @@
+<planet name="flumotion-test">
+  
+  <atmosphere>
+    <component name="porter-http"
+               type="porter"
+               label="porter-http"
+               worker="localhost.localdomain"
+               project="flumotion"
+               version="0.7.0.1">
+      <property name="username">tOGGSCwWpoYT</property>
+      <property name="socket-path">flu-XzDYaT.socket</property>
+      <property name="password">zBducainvXeG</property>
+      <property name="port">8800</property>
+    </component>
+    
+  </atmosphere>
+  
+  <flow name="default">
+    <component name="producer-audio"
+               type="pipeline-producer"
+               label="producer-audio"
+               worker="n900"
+               project="flumotion"
+               version="0.7.0.1">
+      <property name="pipeline">pulsesrc</property>
+      <clock-master>true</clock-master>
+    </component>
+    
+    <component name="producer-video"
+               type="n900cam-producer"
+               label="producer-video"
+               worker="n900"
+               version="0.7.0.1">
+      <clock-master>false</clock-master>
+    </component>
+    
+    <component name="encoder-video"
+               type="n900h264-encoder"
+               label="encoder-video"
+               worker="n900"
+               version="0.7.0.1">
+      <eater name="default">
+        <feed alias="default">producer-video:default</feed>
+      </eater>
+      <clock-master>false</clock-master>
+    </component>
+    
+    <component name="encoder-audio"
+               type="n900aac-encoder"
+               label="encoder-audio"
+               worker="n900"
+               version="0.7.0.1">
+      <eater name="default">
+        <feed alias="default">producer-audio:default</feed>
+      </eater>
+      <property name="bitrate">64000</property>
+      <clock-master>false</clock-master>
+    </component>
+    
+    <component name="muxer-audio-video"
+               type="flv-gst-muxer"
+               label="muxer-audio-video"
+               worker="n900"
+               version="0.7.0.1">
+      <eater name="default">
+        <feed alias="default">encoder-audio:default</feed>
+        <feed alias="default-bis">encoder-video:default</feed>
+      </eater>
+      <clock-master>false</clock-master>
+    </component>
+    
+    <component name="http-audio-video"
+               type="http-streamer"
+               label="http-audio-video"
+               worker="localhost.localdomain"
+               project="flumotion"
+               version="0.7.0.1">
+      <eater name="default">
+        <feed alias="default">muxer-audio-video:default</feed>
+      </eater>
+      <property name="porter-username">tOGGSCwWpoYT</property>
+      <property name="mount-point">/n900.flv</property>
+      <property name="burst-on-connect">False</property>
+      <property name="port">8800</property>
+      <property name="type">slave</property>
+      <property name="porter-socket-path">flu-XzDYaT.socket</property>
+      <property name="porter-password">zBducainvXeG</property>
+      <clock-master>false</clock-master>
+      <plugs>
+      </plugs>
+    </component>
+    
+  </flow>
+  
+</planet>

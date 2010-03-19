@@ -1,0 +1,39 @@
+<registry>
+  <components>
+    <component type="flv-gst-muxer" base="flumotion/component/muxers"
+               _description="Muxes encoded feeds into an Flv feed.">
+      <source location="flumotion.component.muxers.gstflv"/>
+      <feeder name="default"/>
+      <eater name="default" multiple="yes"/>
+      <entries>
+        <entry type="component" location="flv.py"
+               function="Flv"/>
+      </entries>
+    </component>
+  </components>
+
+  <bundles>
+    <bundle name="muxers-gst-flv-base" project="n900">
+        <dependencies>
+            <dependency name="muxers-base" />
+        </dependencies>
+
+        <directories>
+            <directory name="flumotion/component/muxers/gstflv">
+                <filename location="__init__.py" />
+            </directory>
+        </directories>
+    </bundle>
+    <bundle name="muxers-gst-flv" project="n900">
+        <dependencies>
+            <dependency name="muxers-gst-flv-base" />
+        </dependencies>
+        <directories>
+            <directory name="flumotion/component/muxers/gstflv">
+                <filename location="flv.py" />
+            </directory>
+        </directories>
+    </bundle>
+  </bundles>
+
+</registry>

@@ -1,0 +1,11 @@
+include $(top_srcdir)/common/python.mk
+
+component_PYTHON = __init__.py flv.py
+componentdir = $(libdir)/flumotion/python/flumotion/component/muxers/gstflv
+component_DATA = \
+	gstflv.xml
+
+clean-local:
+	rm -rf *.pyc *.pyo
+
+EXTRA_DIST = $(component_DATA)

@@ -1,0 +1,53 @@
+<registry>
+
+  <components>
+
+    <component type="n900h264-encoder" base="flumotion/component/encoders/n900h264"
+               _description="Encodes a raw video feed using N900's h264 dsp encoder." >
+      <source location="flumotion.component.encoders.n900h264.n900h264" />
+      <eater name="default" />
+      <feeder name="default" />
+      <entries>
+        <entry type="component" location="n900h264.py"
+               function="N900H264"/>
+      </entries>
+
+      <properties>
+        <property name="bitrate" type="int"
+                  _description="The bit rate to encode at (in bps)." />
+      </properties>
+    </component>
+
+  </components>
+
+  <bundles>
+
+    <bundle name="n900h264-base" project="n900">
+        <dependencies>
+            <dependency name="component-base" />
+        </dependencies>
+
+        <directories>
+            <directory name="flumotion/component/encoders/n900h264">
+                <filename location="__init__.py" />
+            </directory>
+        </directories>
+    </bundle>
+
+    <bundle name="n900h264-component" project="n900">
+        <dependencies>
+            <dependency name="component" />
+            <dependency name="n900h264-base" />
+        </dependencies>
+
+        <directories>
+            <directory name="flumotion/component/encoders/n900h264">
+                <filename location="n900h264.py" />
+            </directory>
+        </directories>
+    </bundle>
+
+
+  </bundles>
+
+</registry>

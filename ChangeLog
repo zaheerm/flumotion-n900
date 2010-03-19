@@ -1,0 +1,619 @@
+2010-03-01  Xavier Queralt Mateu  <xqueralt@flumotion.com>
+
+	reviewed by: Zaheer Abbas Merali
+
+	* configure.ac:
+	* env.in:
+	* flumotion/Makefile.am:
+	* flumotion/component/dvb/dvb.py:
+	* flumotion/component/dvb/dvb.xml:
+	* flumotion/component/dvb/wizard.glade:
+	* flumotion/component/dvb/wizard_gtk.py:
+	* flumotion/worker/checks/dvb.py:
+	* flumotion/component/dvb/wizard.glade (added):
+	* flumotion/worker (added):
+	* flumotion/worker/checks (added):
+	* flumotion/worker/checks/dvb.py (added):
+	* flumotion/worker/checks/__init__.py (added):
+	* flumotion/worker/checks/Makefile.am (added):
+	* flumotion/worker/checks/dvb.xml (added):
+	* flumotion/worker/__init__.py (added):
+	* flumotion/worker/Makefile.am (added):
+	* flumotion/component/dvb/dvbchecks.py (deleted):
+	* flumotion/component/dvb/dvb-probe-channels.glade (deleted):
+	* flumotion/component/dvb/dvb-antenna.glade (deleted):
+	* flumotion/component/dvb/dvb-select-channel.glade (deleted):
+	* flumotion/component/dvb/dvb-video-config.glade (deleted):
+	Merge audio-wizard branch into trunk.
+	Add support for DVB audio in wizard. At the same time, try to simplify
+	the UI. See #833
+
+2010-02-03  Andoni Morales Alastruey  <amorales@flumotion.com>
+
+	reviewed by: Zaheer Abbas Merali
+
+	* flumotion/component/dvb/dvb.py:
+	'program_numbers' is a colon separated list and can't
+  be printed with %d
+
+2009-09-28  Xavier Queralt  <xqueralt@flumotion.com>
+
+	* configure.ac:
+	* flumotion-dvb.spec.in:
+	Adapt to changes from r8195
+
+2009-04-23  Xavier Queralt Mateu  <xqueralt@flumotion.com>
+
+	* configure.ac:
+	Back to dev
+
+=== release 0.5.1 ===
+
+2009-04-23  Xavier Queralt Mateu  <xqueralt@flumotion.com>
+	
+	* Makefile.am:
+	Adding rules for creating debs
+	* configure.ac:
+	Releasing 0.5.1 and updating the requirements of flumotion to 0.5.4
+	* pkg/debian-common (added):
+	* pkg/debian-common/rules (added):
+	* pkg/ubuntu-intrepid (added):
+	* pkg/ubuntu-intrepid/control (added):
+	* pkg/ubuntu-intrepid/changelog (added):
+	Add a new directory for ubuntu intrepid packages
+
+2009-04-21  Ricard Puig  <rpuig@flumotion.com>
+
+	reviewed by: Zaheer
+
+	* flumotion/component/dvb/dvb.py:
+	Fix Bug in trans-mode parameter.
+
+2009-04-21  Ricard Puig  <rpuig@flumotion.com>
+
+	reviewed by: Zaheer
+
+	* flumotion/component/dvb/dvb.py:
+	Fix bug in using super.
+	Add stats-reporting-interval so we get frontend stats again.
+
+2009-03-23  Zaheer Abbas Merali  <zaheerabbas at merali dot org>
+
+	* flumotion/component/dvb/dvb.xml:
+	Fix trailing whitespace.
+
+2008-12-23  Xavier Queralt Mateu  <xqueralt@flumotion.com>
+
+	* flumotion/component/dvb/dvb.py:
+	* flumotion/component/dvb/dvb.xml:
+	* flumotion/component/dvb/dvbchecks.py:
+	* flumotion/component/dvb/wizard_gtk.py:
+	Fix some scanning
+
+2008-11-07  Zaheer Abbas Merali  <zaheerabbas at merali dot org>
+
+	* flumotion/component/dvb/dvbchecks.py:
+	Set transmission-mode to AUTO if reserved is sent on the bus.
+
+2008-11-06  Zaheer Abbas Merali  <zaheerabbas at merali dot org>
+
+	* flumotion/component/dvb/dvb-probe-channels.glade:
+	* flumotion/component/dvb/dvbchecks.py:
+	* flumotion/component/dvb/wizard_gtk.py:
+	Peer work with Xavier Queralt.
+
+	Make wizard work with DVB-S as well as DVB-T.
+	Fix a couple of bugs stopping scanning.
+
+2008-11-05  Zaheer Abbas Merali  <zaheerabbas at merali dot org>
+
+	* flumotion/component/dvb/dvb.py:
+	Fix due to changes in gst-python/gstreamer.
+	* flumotion/component/dvb/dvbchecks.py:
+	General cleanup ( + extra debug )
+
+2008-10-10  Zaheer Abbas Merali  <zaheerabbas at merali dot org>
+
+	* flumotion/component/dvb/admin_gtk.py:
+	Create the widget before base class's render is called.
+
+2008-10-08  Zaheer Abbas Merali  <zaheerabbas at merali dot org>
+
+	* flumotion/component/dvb/admin_gtk.py:
+	Chaneg glade_file to gladeFile.
+
+2008-10-07  Zaheer Abbas Merali  <zaheerabbas at merali dot org>
+
+	* flumotion/component/dvb/admin_gtk.py:
+	Fix UI page showing Channel Information.
+
+2008-10-07  Zaheer Abbas Merali  <zaheerabbas at merali dot org>
+
+	* flumotion/component/dvb/dvb.py:
+	Fix up audio only streams by adding a queue after the tee.
+
+2008-10-03  Thomas Vander Stichele  <thomas at apestaart dot org>
+
+	* flumotion/test/Makefile.am:
+	  Set TRIAL_ENV.
+	* Makefile.am:
+	* env (deleted):
+	* env.in: (added)
+	  Generate env.
+	* configure.ac:
+	  bump to 0.5
+
+2008-10-03  Zaheer Abbas Merali  <zaheerabbas at merali dot org>
+
+	* flumotion/component/dvb/dvb.xml:
+	Add missing properties: has-video, video-decoder and audio-decoder.
+
+2008-08-19  Johan Dahlin  <johan@gnome.org>
+
+	* flumotion/component/dvb/dvbchecks.py:
+	Remove - and _ from city names. Remove trailing whitespace
+	and make comform to pep8.py
+
+2008-08-19  Johan Dahlin  <johan@gnome.org>
+
+	* flumotion/component/dvb/dvb-probe-channels.glade:
+	* flumotion/component/dvb/wizard_gtk.py:
+	Some minor style fixes.
+	Pulse the progress bar a bit more often with less progress,
+	reset it and set the label if we cannot find any channels.
+
+2008-07-25  Zaheer Abbas Merali  <zaheerabbas at merali dot org>
+
+	* flumotion/component/dvb/wizard_gtk.py:
+	Pulse progress bar when scanning at 5 second intervals.
+
+2008-07-24  Zaheer Abbas Merali  <zaheerabbas at merali dot org>
+
+	* flumotion/component/dvb/dvbchecks.py:
+	* flumotion/component/dvb/wizard_gtk.py:
+	Make country and antenna for dvb-t more friendly looking.
+
+2008-07-24  Johan Dahlin  <johan@gnome.org>
+
+	* flumotion/component/dvb/wizard_gtk.py:
+	Clean up the wizard a bit further, to make the code closer
+	to the other pages.
+
+2008-07-23  Zaheer Abbas Merali  <zaheerabbas at merali dot org>
+
+	* configure.ac:
+	Depend on newer flumotion due to wizard stuff.
+	* flumotion/component/dvb/Makefile.am:
+	* flumotion/component/dvb/admin_gtk.py:
+	Fix for move of class.
+	* flumotion/component/dvb/dvb.py:
+	Fix for move of function.
+	* flumotion/component/dvb/dvb.xml:
+	* flumotion/component/dvb/dvbchecks.py:
+	* flumotion/component/dvb/wizard_gtk.py:
+	* flumotion/component/dvb/dvbchecks.py (added):
+	* flumotion/component/dvb/dvb-probe-channels.glade (added):
+	* flumotion/component/dvb/dvb-antenna.glade (added):
+	* flumotion/component/dvb/dvb-select-channel.glade (added):
+	* flumotion/component/dvb/wizard_gtk.py (added):
+	* flumotion/component/dvb/dvb-video-config.glade (added):
+	Added wizard code for DVB. Now can do a wizard with DVB video.
+	Audio not working yet.
+
+2008-04-09  Zaheer Abbas Merali  <zaheerabbas at merali dot org>
+
+	* flumotion/component/dvb/admin_gtk.py:
+	Fix stupidity in DVBAdminGtk.
+	Add stub for new MpegTSSplitter admin gtk.
+
+2008-04-09  Arek Korbik  <arkadini@gmail.com>
+
+	* flumotion/component/dvb/dvb.xml:
+	Make 'code-rate-hp' a string - it should accept non-fractions,
+	too.
+
+
+2008-04-09  Zaheer Abbas Merali  <zaheerabbas at merali dot org>
+
+	* flumotion/component/dvb/dvb.py:
+	Fix up chaining up of configure_pipeline.
+	Fix up naming of second tee element.
+
+2008-04-04  Zaheer Abbas Merali  <zaheerabbas at merali dot org>
+
+	* flumotion/component/dvb/dvb.py:
+	Rename do_check to do_check_dvb because it seems do_check
+	is not called of the final object's class but from the
+	object's DVBTSProducer's class.
+
+2008-03-26  Zaheer Abbas Merali  <zaheerabbas at merali dot org>
+
+	* flumotion/component/dvb/dvb.py:
+	Make MpegTSSplitter inherit from DVBTSProducer so the
+	bus message handling is re-used.
+	DVB now chains up its configure_pipeline to DVBTSProducer
+	to reduce code duplication and also no longer duplicates
+	init method.
+
+2008-03-24  Zaheer Abbas Merali  <zaheerabbas at merali dot org>
+
+	* flumotion/component/dvb/admin_gtk.py:
+	* flumotion/component/dvb/dvb.py:
+	Add a channel information node to the dvb producers.
+
+2008-03-05  Zaheer Abbas Merali  <zaheerabbas at merali dot org>
+
+	* flumotion/component/dvb/dvb.xml:
+	Add back pids property for backwards compatibility, even
+	though it is just going to be ignored.
+
+2008-02-29  Zaheer Abbas Merali  <zaheerabbas at merali dot org>
+
+	* flumotion/component/dvb/admin_gtk.py:
+	Rename Signal Stats to Signal Statistics.
+
+2008-02-29  Zaheer Abbas Merali  <zaheerabbas at merali dot org>
+
+	* conf/dvb-t-two-channels-ogg.xml:
+	* conf/dvb-t-two-channels.xml:
+	Example flow files to have 2 channels streamed from same
+	adapter.
+
+2008-02-29  Zaheer Abbas Merali  <zaheerabbas at merali dot org>
+
+	* flumotion/component/dvb/dvbbin.py:
+	Remove old unused experimental code.
+
+2008-02-29  Zaheer Abbas Merali  <zaheerabbas at merali dot org>
+
+	* flumotion/component/dvb/admin_gtk.py:
+	* flumotion/component/dvb/dvb.py:
+	* flumotion/component/dvb/dvb.xml:
+	Split of DVB Producer into 3 components:
+	dvb-ts-producer (just captures and outputs a ts)
+	mpeg-ts-splitter (takes a ts and outputs a ts relevant for a
+	                  certain program)
+	mpeg-ts-decoder (demuxes and decodes a ts into raw video and audio)
+	Orginal dvb-producer still exists. Components refactored so common
+	code is shared.
+
+2008-02-27  Michael Smith <msmith@fluendo.com>
+
+	* flumotion/component/dvb/dvb.xml:
+	  Bundle more code properly.
+
+2007-10-29  Zaheer Abbas Merali  <zaheerabbas at merali dot org>
+
+	* flumotion/component/dvb/dvb.py:
+	* flumotion/component/dvb/dvb.xml:
+	Move to using dvbbasebin instead of dvbsrc.
+	No longer required to specify pids property, just program
+	number is required.
+	This gives hardware CAM support for free,
+
+2007-10-24  Zaheer Abbas Merali  <zaheerabbas at merali dot org>
+
+	* flumotion/component/dvb/dvb.py:
+	Fix device paramter construction if old dvbsrc used with
+	no device specified and adapter specified instead.
+
+2007-10-24  Zaheer Abbas Merali  <zaheerabbas at merali dot org>
+
+	* flumotion/component/dvb/dvb.py:
+	Adjust for API changes and fix up one template.
+
+2007-10-23  Zaheer Abbas Merali  <zaheerabbas at merali dot org>
+
+	* flumotion/component/dvb/dvb.xml:
+	remove duplicate code-rate-hp in xml
+
+2007-10-23  Zaheer Abbas Merali  <zaheerabbas at merali dot org>
+
+	* flumotion/component/dvb/dvb.py:
+	* flumotion/component/dvb/dvb.xml:
+	Make code-rate-hp both DVB-T and DVB-S. Bring back old
+	device property to allow backwards compatibility for configs.
+	Handle old dvbsrc and new dvbsrc properly.
+	Set code-rate-hp with DVB-S when specified (needed for 
+	working diseq).
+
+2007-08-14  Zaheer Abbas Merali  <zaheerabbas at merali dot org>
+
+	* flumotion/component/dvb/dvb.py (configure_pipeline):
+	Fix case where we have an audio only stream.
+	* flumotion/component/dvb/dvb.xml:
+	Should not be synchronised because we don't have a clock yet
+	in the ts demuxer.
+
+2007-08-13  Zaheer Abbas Merali  <zaheerabbas at merali dot org>
+
+	* flumotion/component/dvb/dvb.py (DVB.get_pipeline_string,
+	  _bus_message_received_cb):
+	Set check-imperfect-timestamp to True not leave it in thin air!
+	Add message when we receive disconts from decoders that are
+	> 10 seconds or negative.
+
+2007-08-10  Zaheer Abbas Merali  <zaheerabbas at merali dot org>
+
+	* flumotion/component/dvb/dvb.py (DVB.get_pipeline_string,
+	  configure_pipeline):
+	Always add an identity check-imperfect-timestamp after
+	decoders. Also add pad monitors to the src pads of the
+	decoders so we go hungry when there is no data.
+
+2007-07-30  Zaheer Abbas Merali  <zaheerabbas at merali dot org>
+
+	* flumotion/component/dvb/dvb.py (DVB.init, DVB.do_check,
+	  DVB.get_pipeline_string):
+	Check for dvbsrc version and start of using new properties
+	when able.
+	Replace stupid par assignment.
+
+2007-07-30  Zaheer Abbas Merali  <zaheerabbas at merali dot org>
+
+	* flumotion/component/dvb/dvb.xml:
+	dvb producer does not need to have such a high clock
+	priority so use the default clock priority.
+
+2007-07-04  Arek Korbik  <arkadini@gmail.com>
+
+	* flumotion/component/dvb/dvb.xml:
+	Add missing dependency.
+
+2007-06-19  Zaheer Abbas Merali  <zaheerabbas at merali dot org>
+
+	* flumotion/component/dvb/dvb.py (DVB.get_pipeline_string):
+	Fix use of scaled_width that may not be initialised.
+
+2007-05-24  Zaheer Abbas Merali  <zaheerabbas at merali dot org>
+
+	* flumotion/component/dvb/dvb.py (DVB.get_pipeline_string):
+	* flumotion/component/dvb/dvb.xml:
+	Add deinterlacing support using a real deinterlacer.
+
+2007-04-05  Zaheer Abbas Merali  <<zaheerabbas at merali dot org>>
+
+	* configure.ac:
+	Back to dev.
+
+== release 0.4.1 ==
+
+2007-04-05  Zaheer Abbas Merali  <<zaheerabbas at merali dot org>>
+
+	* flumotion/component/dvb/admin_gtk.py (DVBAdminGtkNode.haveWidgetTree,
+	  DVBAdminGtkNode.setUIState, DVBAdminGtkNode.lockSet, DVBAdminGtk):
+	* flumotion/component/dvb/dvb.glade:
+	Add lock value to admin.
+	Reduce padding of widgets.
+
+2007-04-03  Zaheer Abbas Merali  <<zaheerabbas at merali dot org>>
+
+	* flumotion/component/dvb/admin_gtk.py (DVBAdminGtkNode.haveWidgetTree,
+	  DVBAdminGtkNode.signalSet, DVBAdminGtkNode.snrSet,
+	  DVBAdminGtkNode.berSet, DVBAdminGtkNode.uncSet, DVBAdminGtk,
+	  DVBAdminGtk.setup):
+	* flumotion/component/dvb/dvb.xml:
+	Fix gtk admin to actually work and get bundled.
+
+2007-04-02  Zaheer Abbas Merali  <<zaheerabbas at merali dot org>>
+
+	* flumotion/component/dvb/Makefile.am:
+	* flumotion/component/dvb/admin_gtk.py (DVBAdminGtkNode,
+	  DVBAdminGtkNode.haveWidgetTree, DVBAdminGtkNode.setUIState,
+	  DVBAdminGtkNode.stateSet, DVBAdminGtkNode.wave_changed_cb,
+	  DVBAdminGtkNode.signalSet, DVBAdminGtkNode.snrSet,
+	  DVBAdminGtkNode.berSet, DVBAdminGtkNode.uncSet, DVBAdminGtk,
+	  DVBAdminGtk.setup):
+	* flumotion/component/dvb/dvb.glade:
+	* flumotion/component/dvb/dvb.py (DVB.get_pipeline_string, pmt_info_cb,
+	  setVolume, getVolume):
+	* flumotion/component/dvb/dvb.xml:
+	Add admin ui for dvb.  Also audioconvert needed between audiorate
+	and level because level doesn't handle 32 bit integers.
+
+2007-04-02  Zaheer Abbas Merali  <<zaheerabbas at merali dot org>>
+
+	* flumotion/component/dvb/dvb.py (DVB.get_pipeline_string,
+	  configure_pipeline):
+	Add volume effect to DVB.
+
+2007-04-02  Zaheer Abbas Merali  <<zaheerabbas at merali dot org>>
+
+	* flumotion/component/dvb/dvb.py (DVB, DVB.init,
+	  _bus_message_received_cb):
+	Add signal stats to uiState.	
+
+2007-03-29  Zaheer Abbas Merali  <<zaheerabbas at merali dot org>>
+
+	* flumotion/component/dvb/dvb.py (DVB.get_pipeline_string):
+	Stupid flumotion complains if a feeder is not in the template,
+	so if there is no video just tee the ts to the dummy video
+	feeder.
+
+2007-03-29  Zaheer Abbas Merali  <zaheerabbas at merali dot org>
+
+	* flumotion/component/dvb/dvb.py (DVB.get_pipeline_string,
+	  _bus_message_received_cb):
+	* flumotion/component/dvb/dvb.xml:
+	Add new options: has-video, video-decoder and audio-decoder.
+	Make sure dvb stats are logged in debug level.
+	Allow audio-only dvb.
+
+2007-02-12  Thomas Vander Stichele  <thomas at apestaart dot org>
+
+	* configure.ac:
+	* flumotion-dvb.spec.in:
+	  fix buglets
+
+2007-02-08  Michael Smith  <msmith@fluendo.com>
+
+	* configure.ac:
+	  Back to dev.
+
+=== release 0.3.1 ===
+
+2007-02-08  Michael Smith  <msmith@fluendo.com>
+
+	* Makefile.am:
+	* env
+	* configure.ac:
+	* flumotion-dvb.spec.in:
+	* po/fr.po:
+	* po/nl.po:
+	  To 0.3.1
+
+2006-12-19  Zaheer Abbas Merali  <zaheerabbas at merali dot org>
+
+	* flumotion/component/dvb/dvb.xml:
+	Change component type to be named as per convention.
+
+2006-11-16  Zaheer Abbas Merali  <zaheerabbas at merali dot org>
+
+	* flumotion/component/dvb/dvb.py:
+	We should no longer use es-pids as we have a PMT.
+
+2006-11-16  Zaheer Abbas Merali  <zaheerabbas at merali dot org>
+
+	* flumotion/component/dvb/dvb.py:
+	Fix pipeline.
+
+2006-11-16  Zaheer Abbas Merali  <zaheerabbas at merali dot org>
+
+	* flumotion/component/dvb/dvb.py:
+	Remove offending (sq).
+
+2006-11-16  Zaheer Abbas Merali  <zaheerabbas at merali dot org>
+
+	* flumotion/component/dvb/dvb.py:
+	* flumotion/component/dvb/dvb.xml:
+	Added a scaled-width property so we can fix interlacing issues.
+
+2006-11-14  Zaheer Abbas Merali  <zaheerabbas at merali dot org>
+
+	* flumotion/component/dvb/dvb.xml:
+	Added program-number to properties.
+
+2006-11-14  Zaheer Abbas Merali  <zaheerabbas at merali dot org>
+
+	* flumotion/component/dvb/dvb.py:
+	Output PAT and PMT info at debug level when changed.
+
+2006-11-10  Zaheer Abbas Merali  <zaheerabbas at merali dot org>
+
+	* flumotion/component/dvb/dvb.py:
+	Add a translatable message.
+	Fix dvb-type: FILE.
+	Add queues after tee.
+	* flumotion/component/dvb/dvbbin.py:
+	initial import of a DvbBin that does close interaction between
+	dvbsrc and flutsdemux.
+
+2006-11-06  Zaheer Abbas Merali  <zaheerabbas at merali dot org>
+
+	* flumotion/component/dvb/dvb.py:
+	* flumotion/component/dvb/dvb.xml:
+	Do not require frequency as it's not required for files.
+	Only pass freq and pids to dvbsrc not to filesrc as well.
+	Make sure FILE uses identity sync=true.
+
+2006-11-05  Zaheer Abbas Merali  <zaheerabbas at merali dot org>
+
+	* flumotion/component/dvb/dvb.py:
+	Device has a default, don't require it for S and T.
+
+2006-11-05  Zaheer Abbas Merali  <zaheerabbas at merali dot org>
+
+	* flumotion/component/dvb/dvb.py:
+	* flumotion/component/dvb/dvb.xml:
+	Add pixel-aspect-ratio property.
+
+2006-11-05  Zaheer Abbas Merali  <zaheerabbas at merali dot org>
+
+	* flumotion/component/dvb/dvb.py:
+	Use bi-linear video scaling.
+
+2006-11-05  Zaheer Abbas Merali  <zaheerabbas at merali dot org>
+
+	* flumotion/component/dvb/dvb.py:
+	* flumotion/component/dvb/dvb.xml:
+	Add device property so we can actually select adapter we want
+	to use for DVB-S and DVB-T.
+	Require filename parameter for dvb-type: FILE.
+
+2006-11-05  Thomas Vander Stichele  <thomas at apestaart dot org>
+
+	* configure.ac:
+	  remove pygtk dep
+
+2006-11-05  Thomas Vander Stichele  <thomas at apestaart dot org>
+
+	* Makefile.am:
+	* flumotion/component/dvb/dvb.py:
+	* flumotion/test/Makefile.am:
+	* flumotion/test/test_sample_admin_gtk.py:
+	* flumotion/test/test_sample_common.py:
+	* po/Makevars:
+	* po/POTFILES.in:
+	* po/fr.po:
+	* po/nl.po:
+	  fix up bits and pass make distcheck
+
+2006-11-03  Zaheer Abbas Merali  <zaheerabbas at merali dot org>
+
+	* conf/dvb-t.xml:
+	Add sample flow for DVB-T, this gives TV3 in Barcelona.
+
+2006-11-03  Zaheer Abbas Merali  <zaheerabbas at merali dot org>
+
+	* flumotion/component/dvb/dvb.py:
+	* flumotion/component/dvb/dvb.xml:
+	Add option to get a transport stream from file.
+	This requires dvb-type property set to FILE.
+
+2006-10-31  Zaheer Abbas Merali  <zaheerabbas at merali dot org>
+
+	* flumotion/component/dvb/dvb.py:
+	Log the dvb card's frontend stats.
+
+2006-10-30  Zaheer Abbas Merali  <zaheerabbas at merali dot org>
+
+	* flumotion/component/dvb/dvb.py:
+	Fix modulation for changed dvbsrc parameter enum format.
+	Do the videoscale after videorate.
+
+2006-10-04  Zaheer Abbas Merali  <zaheerabbas at merali dot org>
+
+	* flumotion/component/dvb/dvb.py:
+	Fix syntax error in pipeline template.
+
+2006-10-04  Zaheer Abbas Merali  <zaheerabbas at merali dot org>
+
+	* flumotion/component/dvb/dvb.py:
+	* flumotion/component/dvb/dvb.xml:
+	Add a mpegts feeder to dvb.
+
+2006-10-04  Zaheer Abbas Merali  <zaheerabbas at merali dot org>
+
+	* flumotion/component/dvb/dvb.py:
+	Only scale if requested.  Add videorate and audiorate.
+
+2006-10-04  Zaheer Abbas Merali  <zaheerabbas at merali dot org>
+
+	* flumotion/component/dvb/dvb.py:
+	Actually fix the pipeline template.
+
+2006-10-04  Zaheer Abbas Merali  <zaheerabbas at merali dot org>
+
+	* flumotion/component/dvb/dvb.py:
+	Fix pipeline template.
+
+2006-10-04  Zaheer Abbas Merali  <zaheerabbas at merali dot org>
+
+	* configure.ac:
+	Remove check for twisted version, is implied by the
+	flumotion check.
+
+2006-10-04  Zaheer Abbas Merali  <zaheerabbas at merali dot org>
+
+	* flumotion/component/dvb/dvb.xml:
+	Rename freq property to frequency.

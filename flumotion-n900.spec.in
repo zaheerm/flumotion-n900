@@ -1,0 +1,47 @@
+Name:           @PACKAGE@
+Version:        @VERSION@
+Release:        @PACKAGE_VERSION_RELEASE@%{?dist}
+Summary:        Flumotion support for N900 components
+
+Group:          Applications/Internet
+License:	GPL
+URL:            http://www.maemo.org/
+Source:         %{name}-%{version}.tar.bz2
+BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
+
+Requires:	flumotion > @FLU_REQ@
+
+BuildRequires:	gettext
+BuildRequires:	python >= 2.4
+#BuildRequires:	epydoc
+BuildRequires:  flumotion
+
+%description
+Flumotion N900 support.
+
+%prep
+%setup -q
+
+%build
+%configure
+
+make
+
+%install
+rm -rf $RPM_BUILD_ROOT
+
+%makeinstall
+
+%find_lang flumotion-n900
+
+%clean
+rm -rf $RPM_BUILD_ROOT
+
+%files -f flumotion-n900.lang
+%defattr(-,root,root,-)
+%doc ChangeLog COPYING README AUTHORS LICENSE.Flumotion LICENSE.GPL
+%{_libdir}/flumotion
+
+%changelog
+* Fri Mar 19 2010 Zaheer Abbas Merali  <zaheerabbas at merali dot org>
+- first spec
