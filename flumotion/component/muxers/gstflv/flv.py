@@ -22,6 +22,8 @@
 import gst
 from twisted.internet import defer
 
+from flumotion.common import messages
+from flumotion.common.i18n import N_, gettexter
 from flumotion.component import feedcomponent
 
 class Flv(feedcomponent.MultiInputParseLaunchComponent):
@@ -60,12 +62,21 @@ class Flv(feedcomponent.MultiInputParseLaunchComponent):
             if not caps:
                 return False
             muxer = self.pipeline.get_by_name("muxer")
-            if "video" in caps.to_string():
-                vpad = muxer.get_request_pad("video")
-                identity.get_pad("src").link(vpad)
-            elif "audio" in caps.to_string():
-                apad = muxer.get_request_pad("audio")
-                identity.get_pad("src").link(apad)
+            linkpad = muxer.get_compatible_pad(pad, caps)
+            if not linkpad:
+                m = messages.Error(T_(N_(
+                    "The incoming data is not compatible with this muxer.")),
+                    debug="Caps %s not compatible with this muxer." % (
+                        caps.to_string()))
+                self.addMessage(m)
+                return True
+            identity.get_pad("src").link(linkpad)
+            #if "video" in caps.to_string():
+            #    vpad = muxer.get_request_pad("video")
+            #    identity.get_pad("src").link(vpad)
+            #elif "audio" in caps.to_string():
+            #    apad = muxer.get_request_pad("audio")
+            #    identity.get_pad("src").link(apad)
             depay.get_pad("src").remove_buffer_probe(self._probes[depay])
             identity.get_pad("src").set_blocked_async(True, self.is_blocked_cb)
             return True
