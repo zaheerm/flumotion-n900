@@ -26,74 +26,9 @@ from flumotion.common import messages
 from flumotion.common.i18n import N_, gettexter
 from flumotion.component import feedcomponent
 
-class Flv(feedcomponent.MultiInputParseLaunchComponent):
+class Flv(feedcomponent.MuxerComponent):
     checkTimestamp = True
 
     def get_muxer_string(self, properties):
-        muxer = 'flvmux name=muxer is-live=True'
+        muxer = 'flvmux name=muxer streamable=True'
         return muxer
-
-    def get_pipeline_string(self, properties):
-        eaters = self.config.get('eater', {})
-        sources = self.config.get('source', [])
-        if eaters == {} and sources != []:
-            # for upgrade without manager restart
-            feeds = []
-            for feed in sources:
-                if not ':' in feed:
-                    feed = '%s:default' % feed
-                feeds.append(feed)
-            eaters = {'default': [(x, 'default') for x in feeds]}
-
-        pipeline = ''
-        for e in eaters:
-            for feed, alias in eaters[e]:
-                pipeline += '@ eater:%s @ ' % alias
-
-        pipeline += self.get_muxer_string(properties) + ' '
-        return pipeline
-
-    def configure_pipeline(self, pipeline, properties):
-        self.fired_eaters = 0
-        self._probes = {} # depay element -> id
-        def buffer_probe_cb(a, b, depay, identity):
-            pad = depay.get_pad("src")
-            caps = pad.get_negotiated_caps()
-            if not caps:
-                return False
-            muxer = self.pipeline.get_by_name("muxer")
-            linkpad = muxer.get_compatible_pad(pad, caps)
-            if not linkpad:
-                m = messages.Error(T_(N_(
-                    "The incoming data is not compatible with this muxer.")),
-                    debug="Caps %s not compatible with this muxer." % (
-                        caps.to_string()))
-                self.addMessage(m)
-                return True
-            identity.get_pad("src").link(linkpad)
-            #if "video" in caps.to_string():
-            #    vpad = muxer.get_request_pad("video")
-            #    identity.get_pad("src").link(vpad)
-            #elif "audio" in caps.to_string():
-            #    apad = muxer.get_request_pad("audio")
-            #    identity.get_pad("src").link(apad)
-            depay.get_pad("src").remove_buffer_probe(self._probes[depay])
-            identity.get_pad("src").set_blocked_async(True, self.is_blocked_cb)
-            return True
-
-        for e in self.eaters.values():
-            identity = self.get_element(e.elementName + '-identity')
-            depay = self.get_element(e.depayName)
-            self._probes[depay] = \
-                depay.get_pad("src").add_buffer_probe(
-                    buffer_probe_cb, depay, identity)
-
-    def is_blocked_cb(self, pad, is_blocked):
-        if is_blocked:
-            self.fired_eaters = self.fired_eaters + 1
-            if self.fired_eaters == len(self.eaters):
-                self.debug("All pads are now blocked")
-                for e in self.eaters.values():
-                    identity = self.get_element(e.elementName + '-identity')
-                    identity.get_pad("src").set_blocked_async(False,
-                        self.is_blocked_cb)
